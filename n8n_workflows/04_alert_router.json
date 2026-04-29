@@ -31,29 +31,6 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://evolution-api-production-aad5.up.railway.app/message/sendText/{{ encodeURIComponent('סיון 0524518134') }}",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {"name": "apikey", "value": "19FB28BE4E14-4F4B-8847-109EF1F2717F"},
-            {"name": "Content-Type", "value": "application/json"}
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"number\": \"972524518134\",\n  \"text\": $json.whatsappText\n}",
-        "options": {"timeout": 10000}
-      },
-      "id": "send-whatsapp",
-      "name": "Send WhatsApp via Evolution",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [460, -100],
-      "continueOnFail": true
-    },
-    {
-      "parameters": {
-        "method": "POST",
         "url": "https://api.telegram.org/bot8673863029:AAGp4gPP7dEuCpqDVRT-wz3bkDYSb7A6Q5k/sendMessage",
         "sendHeaders": true,
         "headerParameters": {
@@ -61,14 +38,14 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"chat_id\": \"846604930\",\n  \"text\": $json.telegramText\n}",
+        "jsonBody": "={\n  \"chat_id\": \"846604930\",\n  \"text\": $json.telegramText,\n  \"parse_mode\": \"HTML\"\n}",
         "options": {"timeout": 10000}
       },
       "id": "send-telegram",
-      "name": "Send Telegram",
+      "name": "Send Telegram (Jarvis)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [460, 100],
+      "position": [460, 0],
       "continueOnFail": true
     },
     {
@@ -88,15 +65,9 @@
       "main": [[{"node": "Build messages", "type": "main", "index": 0}]]
     },
     "Build messages": {
-      "main": [[
-        {"node": "Send WhatsApp via Evolution", "type": "main", "index": 0},
-        {"node": "Send Telegram", "type": "main", "index": 0}
-      ]]
+      "main": [[{"node": "Send Telegram (Jarvis)", "type": "main", "index": 0}]]
     },
-    "Send WhatsApp via Evolution": {
-      "main": [[{"node": "Respond", "type": "main", "index": 0}]]
-    },
-    "Send Telegram": {
+    "Send Telegram (Jarvis)": {
       "main": [[{"node": "Respond", "type": "main", "index": 0}]]
     }
   }

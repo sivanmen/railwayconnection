@@ -25,25 +25,26 @@ UptimeRobot הוא ה"שומר של השומר" — שירות חיצוני שמ
 6. Email: `sivanmen@gmail.com`
 7. שמור
 
-### שלב 4 — Webhook fallback ל-WhatsApp ישיר
-זה הכי חשוב — אם n8n נופל, נריץ את Evolution ישירות:
+### שלב 4 — Webhook fallback ל-Telegram ישיר (העוקף שלך כש-n8n מת)
+זה הכי חשוב — אם n8n נופל, נריץ את Telegram API ישירות (לא דרך n8n):
 
 1. **+ Add Alert Contact** → Type: **Web-Hook**
 2. URL to Notify:
    ```
-   https://evolution-api-production-aad5.up.railway.app/message/sendText/%D7%A1%D7%99%D7%95%D7%9F%200524518134
+   https://api.telegram.org/bot8673863029:AAGp4gPP7dEuCpqDVRT-wz3bkDYSb7A6Q5k/sendMessage
    ```
 3. POST Value (JSON):
    ```json
-   {"number":"972524518134","text":"🚨 n8n Hub נפל!\n\nMonitor: *monitorFriendlyName*\nStatus: *alertType*\nReason: *alertDetails*\n\nבדוק Railway dashboard מיד."}
+   {"chat_id":"846604930","text":"🚨 n8n Hub נפל!\n\nMonitor: *monitorFriendlyName*\nStatus: *alertType*\nReason: *alertDetails*\n\nבדוק Railway dashboard מיד.\nכל ההתראות מ-mesh מושתקות עד שיחזור."}
    ```
 4. Send as JSON: **Yes**
 5. Custom HTTP Headers:
    ```
-   apikey: 19FB28BE4E14-4F4B-8847-109EF1F2717F
    Content-Type: application/json
    ```
 6. שמור
+
+**למה זה חשוב:** כל ההתראות הרגילות מ-mesh עוברות דרך n8n → Telegram bot. כש-n8n מת, אף אחת מהן לא תגיע. UptimeRobot עוקף את n8n לחלוטין ושולח ישר ל-Telegram API, כך שתדע מיד.
 
 ### שלב 5 — חבר את כל ה-Alerts ל-Monitor
 1. חזור ל-Monitor שיצרת ב-שלב 2
