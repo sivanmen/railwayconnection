@@ -1,0 +1,27 @@
+{
+  "fetched_at": "2026-04-29",
+  "total_projects": 21,
+  "projects": [
+    {"id": "08ae6d8b-972a-4deb-be32-36a670938a84", "name": "Evolution API - Social M SYSTEM"},
+    {"id": "09b95815-fd16-40e7-84cd-26689fa04be9", "name": "Dify"},
+    {"id": "0ee2c5dd-4a04-4748-9d93-92c8dfc5a14a", "name": "Paperclip- Ai Team"},
+    {"id": "20af3da4-088b-4a71-9919-b5fba641a708", "name": "Scared Investor Club"},
+    {"id": "27d7e97e-61bd-4a62-91f4-e2a04a18282a", "name": "Payload"},
+    {"id": "2fabb175-54ae-4cdd-b957-88038ee8aac5", "name": "Postiz social media managment"},
+    {"id": "36982cb7-3842-4d9a-a8df-a2303e5a13ee", "name": "Evolution API - Harmony SYSTEM"},
+    {"id": "5873bd15-0f38-4e5a-a0f2-db233e63e625", "name": "N8n+MCP"},
+    {"id": "5e29e00c-6322-4b84-9f98-b766a3f43141", "name": "Typebot"},
+    {"id": "7b7c80aa-2a38-4837-ae69-2fe776a48376", "name": "Chatwoot"},
+    {"id": "8000527b-bbf2-4a12-94cb-9d4bb0be713a", "name": "Postiz 2"},
+    {"id": "81387d39-1ba4-45cc-b1fb-1294f9466388", "name": "Harmony - investments system"},
+    {"id": "8fd4c402-987d-4f7d-84b2-cbe81a8e21e0", "name": "OpenClaw"},
+    {"id": "9838659c-d22e-47fa-8ea2-8ffa1f7ec2af", "name": "Social Media SYSTEM 2"},
+    {"id": "9f0ac8b2-e062-4be4-b000-377279792d14", "name": "Evolution API - Sivan M SYSTEM"},
+    {"id": "a6b9316d-0043-4c8a-923b-5edd23c380b9", "name": "LangGraph SYSTEM"},
+    {"id": "c39caef7-d19f-4998-8b55-867e7bc091cc", "name": "OpenJarvis"},
+    {"id": "c4389b55-1d35-4947-9d23-d5f6077f213f", "name": "Ruflo"},
+    {"id": "d422558c-02f1-4617-93c9-5eb85cecb19d", "name": "Scared Investor מועדון משקיעים"},
+    {"id": "f4536e6f-dbb9-4082-9f0a-ce56217a121d", "name": "buddyboss"},
+    {"id": "fb7a2a6b-0e86-47ce-a091-454fbd45309e", "name": "Property Managment System"}
+  ]
+}

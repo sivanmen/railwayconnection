@@ -1,0 +1,26 @@
+# Secrets
+.secrets.local.env
+*.secret
+*.pem
+*.key
+secrets/
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Misc
+*.log
+acceptance_report_*.json
