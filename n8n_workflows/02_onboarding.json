@@ -1,0 +1,199 @@
+{
+  "name": "02_onboarding",
+  "settings": {"executionOrder": "v1"},
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {"interval": [{"field": "minutes", "minutesInterval": 10}]}
+      },
+      "id": "cron",
+      "name": "Every 10 minutes (polling)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [0, -100]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "railway-event",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "wh-rail",
+      "name": "Webhook /webhook/railway-event",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [0, 100],
+      "webhookId": "railway-event-wh"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Discover candidate services via Railway GraphQL + diff vs registry + idle\nconst RAILWAY_TOKEN = '90daac78-15a0-441c-9f11-1f10ed4b92c4';\nconst N8N_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNzJlZjdlNy04ZWI4LTRiNmMtYTc2ZS05YWUxMTIwOGNkYjciLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiMmE2NDEzZDgtNGZmNS00MDU1LThlNGEtZDdjZjUzODRmNmMxIiwiaWF0IjoxNzc3NDUyMDI4fQ.z_wAAqXb-jMfKXtqZx-pljq-aN6RxUW82gM1-n8V7-Y';\nconst BASE = 'https://n8n-production-986a.up.railway.app';\nconst REG = 'gZRuzAmWa9sNwGc6';\nconst IDLE = '0lrRutLikjTH1SPj';\nconst REALERT_HOURS = 24;\n\nconst query = `query { projects { edges { node { id name services { edges { node { id name deployments(first: 1) { edges { node { status staticUrl } } } serviceInstances { edges { node { domains { serviceDomains { domain } customDomains { domain } } } } } } } } } } } }`;\n\nconst rwl = await this.helpers.httpRequest({\n  method: 'POST', url: 'https://backboard.railway.app/graphql/v2',\n  headers: {'Authorization': 'Bearer ' + RAILWAY_TOKEN, 'Content-Type': 'application/json'},\n  body: {query}, json: true, timeout: 15000\n});\n\nconst [registry, idle] = await Promise.all([\n  this.helpers.httpRequest({method: 'GET', url: BASE + '/api/v1/data-tables/' + REG + '/rows?limit=250', headers: {'X-N8N-API-KEY': N8N_KEY}, json: true, timeout: 10000}),\n  this.helpers.httpRequest({method: 'GET', url: BASE + '/api/v1/data-tables/' + IDLE + '/rows?limit=250', headers: {'X-N8N-API-KEY': N8N_KEY}, json: true, timeout: 10000})\n]);\nconst known = new Set((registry.data || []).map(r => r.name));\nconst recentlyIdle = new Set();\nconst now = Date.now();\nfor (const r of (idle.data || [])) {\n  const last = r.last_attempt_at ? new Date(r.last_attempt_at).getTime() : 0;\n  if (now - last < REALERT_HOURS * 3600 * 1000) recentlyIdle.add(r.service_name);\n}\n\nconst infra = /^(postgres|redis|mysql|mongo|valkey|minio|sandbox|storage|database|worker|runner|chroma|weaviate|plugin|auto-setup|sandbox)/i;\nconst candidates = [];\nfor (const p of (rwl.data?.projects?.edges || [])) {\n  for (const s of (p.node.services.edges || [])) {\n    const svc = s.node;\n    if (infra.test(svc.name)) continue;\n    if (svc.deployments.edges[0]?.node?.status !== 'SUCCESS') continue;\n    const domains = (svc.serviceInstances.edges || []).flatMap(e => [\n      ...(e.node.domains?.serviceDomains || []).map(d => d.domain),\n      ...(e.node.domains?.customDomains || []).map(d => d.domain)\n    ]);\n    if (domains.length === 0) continue;\n    const candidateName = svc.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');\n    if (known.has(candidateName)) continue;\n    if (recentlyIdle.has(svc.name)) continue;\n    candidates.push({\n      candidate_name: candidateName,\n      original_name: svc.name,\n      project_id: p.node.id,\n      project_name: p.node.name,\n      service_id: svc.id,\n      public_url: 'https://' + domains[0]\n    });\n  }\n}\n\nreturn candidates.length === 0 ? [{json: {empty: true}}] : candidates.map(c => ({json: c}));"
+      },
+      "id": "discover",
+      "name": "Discover candidates",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [220, 0]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {"caseSensitive": true, "typeValidation": "loose"},
+          "conditions": [
+            {"leftValue": "={{ $json.empty }}", "rightValue": "", "operator": {"type": "boolean", "operation": "false", "singleValue": true}}
+          ],
+          "combinator": "and"
+        }
+      },
+      "id": "if-any",
+      "name": "Any candidates?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [440, 0]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $json.public_url + '/manifest' }}",
+        "options": {"timeout": 8000, "response": {"response": {"neverError": true}}}
+      },
+      "id": "probe-manifest",
+      "name": "Probe /manifest",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [660, -100],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Decide: register / failed_validation / silent\nconst candidate = $('Discover candidates').item.json;\nconst probeRes = $input.first().json;\nconst statusCode = $input.first().json.statusCode || ($input.first().json && Object.keys($input.first().json).length > 0 ? 200 : 0);\n\n// Check if probe succeeded and got JSON\nlet manifest = null;\nlet valid = false;\nlet errors = [];\n\nif (probeRes && typeof probeRes === 'object' && probeRes.name) {\n  manifest = probeRes;\n  // Validate\n  if (!manifest.name || !/^[a-z0-9-]+$/.test(manifest.name)) errors.push('name לא תקין');\n  if (!manifest.public_url) manifest.public_url = candidate.public_url;\n  if (!manifest.category) errors.push('category חסר');\n  if (!Array.isArray(manifest.capabilities) || manifest.capabilities.length === 0) errors.push('capabilities ריק');\n  if (!manifest.endpoints || typeof manifest.endpoints !== 'object') errors.push('endpoints חסר');\n  valid = errors.length === 0;\n}\n\nlet outcome;\nif (valid) outcome = 'register';\nelse if (manifest) outcome = 'failed_validation';\nelse outcome = 'silent';\n\nreturn [{json: {\n  outcome, candidate, manifest, errors, errors_text: errors.join('\\n• ')\n}}];"
+      },
+      "id": "decide-onboard",
+      "name": "Decide outcome",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [880, -100]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {"conditions": {"options": {"caseSensitive": true}, "conditions": [{"leftValue": "={{ $json.outcome }}", "rightValue": "register", "operator": {"type": "string", "operation": "equals"}}], "combinator": "and"}, "outputKey": "register"},
+            {"conditions": {"options": {"caseSensitive": true}, "conditions": [{"leftValue": "={{ $json.outcome }}", "rightValue": "failed_validation", "operator": {"type": "string", "operation": "equals"}}], "combinator": "and"}, "outputKey": "failed_validation"},
+            {"conditions": {"options": {"caseSensitive": true}, "conditions": [{"leftValue": "={{ $json.outcome }}", "rightValue": "silent", "operator": {"type": "string", "operation": "equals"}}], "combinator": "and"}, "outputKey": "silent"}
+          ]
+        },
+        "options": {}
+      },
+      "id": "switch-outcome",
+      "name": "Outcome?",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [1100, -100]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://n8n-production-986a.up.railway.app/webhook/mesh-register",
+        "sendHeaders": true,
+        "headerParameters": {"parameters": [{"name": "Content-Type", "value": "application/json"}]},
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"name\": $json.manifest.name,\n  \"display_name\": $json.manifest.display_name || $json.candidate.original_name,\n  \"category\": $json.manifest.category,\n  \"public_url\": $json.manifest.public_url || $json.candidate.public_url,\n  \"version\": $json.manifest.version || '1.0.0',\n  \"capabilities\": $json.manifest.capabilities,\n  \"endpoints\": $json.manifest.endpoints,\n  \"auth_type\": $json.manifest.auth_type || 'none',\n  \"project_id\": $json.candidate.project_id,\n  \"project_name\": $json.candidate.project_name,\n  \"service_id\": $json.candidate.service_id\n}",
+        "options": {"timeout": 10000}
+      },
+      "id": "do-register",
+      "name": "Register service",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1320, -200],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://n8n-production-986a.up.railway.app/webhook/mesh-alert",
+        "sendHeaders": true,
+        "headerParameters": {"parameters": [{"name": "Content-Type", "value": "application/json"}]},
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"kind\": \"onboarding_failed\",\n  \"service\": $json.candidate.original_name,\n  \"severity\": \"medium\",\n  \"summary\": \"שירות חדש זוהה אבל ה-manifest שלו לא תקין\\n\\nפרויקט: \" + $json.candidate.project_name + \"\\nכתובת: \" + $json.candidate.public_url + \"\\n\\nשגיאות:\\n• \" + $json.errors_text,\n  \"suggested_fix\": \"בדוק /manifest endpoint ותקן לפי docs/ADD_NEW_SERVICE.md\"\n}",
+        "options": {"timeout": 10000}
+      },
+      "id": "alert-invalid",
+      "name": "Alert invalid",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1320, -100],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://n8n-production-986a.up.railway.app/webhook/mesh-alert",
+        "sendHeaders": true,
+        "headerParameters": {"parameters": [{"name": "Content-Type", "value": "application/json"}]},
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"kind\": \"onboarding_failed\",\n  \"service\": $json.candidate.original_name,\n  \"severity\": \"low\",\n  \"summary\": \"שירות חדש ב-Railway לא תומך ב-mesh\\n\\nפרויקט: \" + $json.candidate.project_name + \"\\nכתובת: \" + $json.candidate.public_url + \"\\n\\nאין /manifest endpoint או שלא נטען. ייתכן ש:\\n1. השירות עדיין לא סיים deploy\\n2. השירות לא mesh-compliant — צריך תבנית או wrapper\\n3. שירות 3rd-party (Dify/Chatwoot/Typebot) — צריך רישום ידני\",\n  \"suggested_fix\": \"אם זה שירות חדש שלך — עטוף ב-mesh-template-node או mesh-template-python מ-templates/. אם זה 3rd-party — הוסף ידנית ב-services_registry\"\n}",
+        "options": {"timeout": 10000}
+      },
+      "id": "alert-silent",
+      "name": "Alert silent",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1320, 0],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "upsert",
+        "dataTableId": {"__rl": true, "mode": "id", "value": "0lrRutLikjTH1SPj"},
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [{"keyName": "service_name", "condition": "eq", "keyValue": "={{ $('Decide outcome').item.json.candidate.original_name }}"}]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "service_name": "={{ $('Decide outcome').item.json.candidate.original_name }}",
+            "project_id": "={{ $('Decide outcome').item.json.candidate.project_id }}",
+            "first_seen_at": "={{ new Date().toISOString() }}",
+            "last_attempt_at": "={{ new Date().toISOString() }}",
+            "attempt_count": 1,
+            "last_error": "={{ $('Decide outcome').item.json.outcome === 'silent' ? 'no /manifest endpoint' : 'invalid manifest: ' + $('Decide outcome').item.json.errors_text }}",
+            "status": "idle"
+          },
+          "matchingColumns": ["service_name"],
+          "schema": [],
+          "attemptToConvertTypes": true,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "mark-idle",
+      "name": "Mark as idle",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [1540, 0],
+      "continueOnFail": true
+    }
+  ],
+  "connections": {
+    "Every 10 minutes (polling)": {"main": [[{"node": "Discover candidates", "type": "main", "index": 0}]]},
+    "Webhook /webhook/railway-event": {"main": [[{"node": "Discover candidates", "type": "main", "index": 0}]]},
+    "Discover candidates": {"main": [[{"node": "Any candidates?", "type": "main", "index": 0}]]},
+    "Any candidates?": {"main": [[{"node": "Probe /manifest", "type": "main", "index": 0}], []]},
+    "Probe /manifest": {"main": [[{"node": "Decide outcome", "type": "main", "index": 0}]]},
+    "Decide outcome": {"main": [[{"node": "Outcome?", "type": "main", "index": 0}]]},
+    "Outcome?": {
+      "main": [
+        [{"node": "Register service", "type": "main", "index": 0}],
+        [{"node": "Alert invalid", "type": "main", "index": 0}, {"node": "Mark as idle", "type": "main", "index": 0}],
+        [{"node": "Alert silent", "type": "main", "index": 0}, {"node": "Mark as idle", "type": "main", "index": 0}]
+      ]
+    }
+  }
+}

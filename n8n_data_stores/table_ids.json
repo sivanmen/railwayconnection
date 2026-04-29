@@ -1,0 +1,10 @@
+{
+  "n8n_base_url": "https://n8n-production-986a.up.railway.app",
+  "default_project_id": "2b67xU5hnff91Quq",
+  "tables": {
+    "services_registry": "gZRuzAmWa9sNwGc6",
+    "incident_state": "IHRBBzaEkfrLOxJ9",
+    "onboarding_history": "DrZgGZwusgtdaw15",
+    "idle_services": "0lrRutLikjTH1SPj"
+  }
+}

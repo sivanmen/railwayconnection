@@ -1,0 +1,150 @@
+{
+  "name": "03_watchdog",
+  "settings": {"executionOrder": "v1"},
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {"interval": [{"field": "minutes", "minutesInterval": 5}]}
+      },
+      "id": "cron",
+      "name": "Every 5 minutes",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://n8n-production-986a.up.railway.app/api/v1/data-tables/gZRuzAmWa9sNwGc6/rows?limit=250",
+        "sendHeaders": true,
+        "headerParameters": {"parameters": [{"name": "X-N8N-API-KEY", "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNzJlZjdlNy04ZWI4LTRiNmMtYTc2ZS05YWUxMTIwOGNkYjciLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiMmE2NDEzZDgtNGZmNS00MDU1LThlNGEtZDdjZjUzODRmNmMxIiwiaWF0IjoxNzc3NDUyMDI4fQ.z_wAAqXb-jMfKXtqZx-pljq-aN6RxUW82gM1-n8V7-Y"}]},
+        "options": {"timeout": 10000}
+      },
+      "id": "list-svc",
+      "name": "List services",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [220, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Run parallel health checks; classify; produce one item per service\nconst rows = ($input.first().json.data || []).filter(r => r.status === 'active');\n\nasync function check(svc) {\n  const url = (svc.public_url || '').replace(/\\/$/,'') + (svc.health_path || '/health');\n  const t0 = Date.now();\n  try {\n    const res = await this.helpers.httpRequest({\n      method: 'GET', url, timeout: 10000,\n      returnFullResponse: true, ignoreHttpStatusErrors: true\n    });\n    const ms = Date.now() - t0;\n    const code = res.statusCode;\n    let classification, severity;\n    if (code === 0 || code === undefined) { classification = 'unreachable'; severity = 'critical'; }\n    else if (code >= 500) { classification = 'server_error'; severity = 'high'; }\n    else if (code === 429) { classification = 'rate_limited'; severity = 'medium'; }\n    else if (code === 404) { classification = 'not_found'; severity = 'medium'; }\n    else if (code >= 400) { classification = 'client_error'; severity = 'medium'; }\n    else if (ms > 5000) { classification = 'slow_response'; severity = 'medium'; }\n    else { classification = 'ok'; severity = 'info'; }\n    const isOk = classification === 'ok';\n    const wasOk = !svc.last_health_status || svc.last_health_status === 'ok' || svc.last_health_status === 'unknown';\n    return {\n      name: svc.name, public_url: svc.public_url, prev_status: svc.last_health_status || 'unknown',\n      code, ms, classification, severity,\n      transition: !isOk && wasOk ? 'new_failure' : isOk && !wasOk ? 'recovered' : 'no_change',\n      now: new Date().toISOString()\n    };\n  } catch (e) {\n    const wasOk = !svc.last_health_status || svc.last_health_status === 'ok' || svc.last_health_status === 'unknown';\n    return {\n      name: svc.name, public_url: svc.public_url, prev_status: svc.last_health_status || 'unknown',\n      code: 0, ms: Date.now()-t0, classification: 'unreachable', severity: 'critical', error: e.message,\n      transition: wasOk ? 'new_failure' : 'no_change',\n      now: new Date().toISOString()\n    };\n  }\n}\n\nconst results = await Promise.all(rows.map(r => check.call(this, r)));\nreturn results.map(r => ({json: r}));"
+      },
+      "id": "check-all",
+      "name": "Check all health",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [440, 0]
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "update",
+        "dataTableId": {"__rl": true, "mode": "id", "value": "gZRuzAmWa9sNwGc6"},
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {"keyName": "name", "condition": "eq", "keyValue": "={{ $json.name }}"}
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "last_health_status": "={{ $json.classification }}",
+            "last_health_ms": "={{ $json.ms }}",
+            "last_seen_at": "={{ $json.now }}"
+          },
+          "matchingColumns": ["name"],
+          "schema": [],
+          "attemptToConvertTypes": true,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "update-registry",
+      "name": "Update registry health",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [660, 0],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {"caseSensitive": true, "typeValidation": "strict"},
+                "conditions": [{"leftValue": "={{ $json.transition }}", "rightValue": "new_failure", "operator": {"type": "string", "operation": "equals"}}],
+                "combinator": "and"
+              },
+              "outputKey": "alert"
+            },
+            {
+              "conditions": {
+                "options": {"caseSensitive": true, "typeValidation": "strict"},
+                "conditions": [{"leftValue": "={{ $json.transition }}", "rightValue": "recovered", "operator": {"type": "string", "operation": "equals"}}],
+                "combinator": "and"
+              },
+              "outputKey": "recovery"
+            }
+          ]
+        },
+        "options": {"fallbackOutput": "extra", "renameFallbackOutput": "skip"}
+      },
+      "id": "switch-transition",
+      "name": "Transition?",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [880, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://n8n-production-986a.up.railway.app/webhook/mesh-alert",
+        "sendHeaders": true,
+        "headerParameters": {"parameters": [{"name": "Content-Type", "value": "application/json"}]},
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"kind\": \"alert\",\n  \"service\": $json.name,\n  \"classification\": $json.classification,\n  \"severity\": $json.severity,\n  \"summary\": $json.name + ' (' + $json.public_url + ')\\nהחזיר ' + $json.code + ' ב-' + $json.ms + 'ms' + ($json.error ? '\\n' + $json.error : ''),\n  \"suggested_fix\": $json.classification === 'unreachable' ? 'בדוק ב-Railway dashboard.' : 'בדוק לוגים ב-Railway.',\n  \"incident_id\": $json.name + '_' + $json.classification + '_' + Date.now()\n}",
+        "options": {"timeout": 10000}
+      },
+      "id": "fire-alert",
+      "name": "Fire alert",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1100, -120],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://n8n-production-986a.up.railway.app/webhook/mesh-alert",
+        "sendHeaders": true,
+        "headerParameters": {"parameters": [{"name": "Content-Type", "value": "application/json"}]},
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"kind\": \"recovery\",\n  \"service\": $json.name,\n  \"summary\": $json.name + ' חזר לתפקד תקין (' + $json.ms + 'ms)',\n  \"incident_id\": $json.name + '_recovery_' + Date.now()\n}",
+        "options": {"timeout": 10000}
+      },
+      "id": "fire-recovery",
+      "name": "Fire recovery",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1100, 120],
+      "continueOnFail": true
+    }
+  ],
+  "connections": {
+    "Every 5 minutes": {"main": [[{"node": "List services", "type": "main", "index": 0}]]},
+    "List services": {"main": [[{"node": "Check all health", "type": "main", "index": 0}]]},
+    "Check all health": {"main": [[{"node": "Update registry health", "type": "main", "index": 0}]]},
+    "Update registry health": {"main": [[{"node": "Transition?", "type": "main", "index": 0}]]},
+    "Transition?": {
+      "main": [
+        [{"node": "Fire alert", "type": "main", "index": 0}],
+        [{"node": "Fire recovery", "type": "main", "index": 0}]
+      ]
+    }
+  }
+}

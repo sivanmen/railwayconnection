@@ -1,0 +1,169 @@
+{
+  "name": "00_register",
+  "settings": {"executionOrder": "v1"},
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "mesh-register",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-register",
+      "name": "Webhook /webhook/mesh-register",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [0, 0],
+      "webhookId": "mesh-register-wh"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Validate manifest + prepare row for registry\nconst body = $input.first().json.body || $input.first().json;\nconst errors = [];\n\nif (!body.name || !/^[a-z0-9-]+$/.test(body.name)) errors.push('name חייב להיות lowercase + מקפים בלבד');\nif (!body.public_url || !body.public_url.startsWith('https://')) errors.push('public_url חייב להיות https://');\nif (!body.category) errors.push('category חסר');\nif (!Array.isArray(body.capabilities) || body.capabilities.length === 0) errors.push('חייב לפחות capability אחד');\nif (!body.endpoints || typeof body.endpoints !== 'object') errors.push('endpoints חסר');\nfor (const cap of body.capabilities || []) {\n  if (!body.endpoints?.[cap]) errors.push(`capability '${cap}' מוצהר אבל אין לו endpoint`);\n}\n\nconst valid = errors.length === 0;\nconst now = new Date().toISOString();\n\nreturn [{json: {\n  valid,\n  errors,\n  errors_text: errors.join('\\n• '),\n  row: {\n    name: body.name || '',\n    display_name: body.display_name || body.name || '',\n    project_id: body.project_id || '',\n    project_name: body.project_name || '',\n    service_id: body.service_id || '',\n    category: body.category || 'other',\n    public_url: body.public_url || '',\n    health_path: body.health_path || '/health',\n    manifest_path: body.manifest_path || '/manifest',\n    capabilities: JSON.stringify(body.capabilities || []),\n    endpoints: JSON.stringify(body.endpoints || {}),\n    auth_type: body.auth_type || 'none',\n    auth_header_template: body.auth_header_template || '',\n    version: body.version || '1.0.0',\n    status: 'active',\n    registered_at: now,\n    last_seen_at: now,\n    last_health_status: 'unknown',\n    last_health_ms: 0\n  }\n}}];"
+      },
+      "id": "validate",
+      "name": "Validate",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [220, 0]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {"caseSensitive": true, "leftValue": "", "typeValidation": "strict"},
+          "conditions": [
+            {
+              "leftValue": "={{ $json.valid }}",
+              "rightValue": true,
+              "operator": {"type": "boolean", "operation": "true", "singleValue": true}
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "if-valid",
+      "name": "Is valid?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [440, 0]
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "upsert",
+        "dataTableId": {"__rl": true, "mode": "id", "value": "gZRuzAmWa9sNwGc6"},
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {"keyName": "name", "condition": "eq", "keyValue": "={{ $json.row.name }}"}
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "name": "={{ $json.row.name }}",
+            "display_name": "={{ $json.row.display_name }}",
+            "project_id": "={{ $json.row.project_id }}",
+            "project_name": "={{ $json.row.project_name }}",
+            "service_id": "={{ $json.row.service_id }}",
+            "category": "={{ $json.row.category }}",
+            "public_url": "={{ $json.row.public_url }}",
+            "health_path": "={{ $json.row.health_path }}",
+            "manifest_path": "={{ $json.row.manifest_path }}",
+            "capabilities": "={{ $json.row.capabilities }}",
+            "endpoints": "={{ $json.row.endpoints }}",
+            "auth_type": "={{ $json.row.auth_type }}",
+            "auth_header_template": "={{ $json.row.auth_header_template }}",
+            "version": "={{ $json.row.version }}",
+            "status": "={{ $json.row.status }}",
+            "registered_at": "={{ $json.row.registered_at }}",
+            "last_seen_at": "={{ $json.row.last_seen_at }}",
+            "last_health_status": "={{ $json.row.last_health_status }}",
+            "last_health_ms": "={{ $json.row.last_health_ms }}"
+          },
+          "matchingColumns": ["name"],
+          "schema": [],
+          "attemptToConvertTypes": true,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "upsert-registry",
+      "name": "Upsert services_registry",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [660, -120]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://n8n-production-986a.up.railway.app/webhook/mesh-alert",
+        "sendHeaders": true,
+        "headerParameters": {"parameters": [{"name": "Content-Type", "value": "application/json"}]},
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"kind\": \"onboarded\",\n  \"service\": $('Validate').item.json.row.name,\n  \"severity\": \"info\",\n  \"summary\": \"קטגוריה: \" + $('Validate').item.json.row.category + \"\\nכישורים: \" + JSON.parse($('Validate').item.json.row.capabilities).join(', ') + \"\\nכתובת: \" + $('Validate').item.json.row.public_url\n}",
+        "options": {"timeout": 10000}
+      },
+      "id": "alert-onboarded",
+      "name": "Alert: onboarded",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [880, -120],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=registered name=\"{{ $('Validate').item.json.row.name }}\""
+      },
+      "id": "respond-ok",
+      "name": "Respond OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1100, -120]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://n8n-production-986a.up.railway.app/webhook/mesh-alert",
+        "sendHeaders": true,
+        "headerParameters": {"parameters": [{"name": "Content-Type", "value": "application/json"}]},
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"kind\": \"onboarding_failed\",\n  \"service\": $('Validate').item.json.row.name || \"unknown\",\n  \"severity\": \"medium\",\n  \"summary\": \"Manifest לא תקין:\\n• \" + $('Validate').item.json.errors_text,\n  \"suggested_fix\": \"בדוק את ה-manifest מול הסכמה ב-docs/ADD_NEW_SERVICE.md\"\n}",
+        "options": {"timeout": 10000}
+      },
+      "id": "alert-failed",
+      "name": "Alert: failed",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [660, 120],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=invalid_manifest errors=\"{{ $('Validate').item.json.errors_text }}\""
+      },
+      "id": "respond-fail",
+      "name": "Respond Fail",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [880, 120]
+    }
+  ],
+  "connections": {
+    "Webhook /webhook/mesh-register": {"main": [[{"node": "Validate", "type": "main", "index": 0}]]},
+    "Validate": {"main": [[{"node": "Is valid?", "type": "main", "index": 0}]]},
+    "Is valid?": {
+      "main": [
+        [{"node": "Upsert services_registry", "type": "main", "index": 0}],
+        [{"node": "Alert: failed", "type": "main", "index": 0}]
+      ]
+    },
+    "Upsert services_registry": {"main": [[{"node": "Alert: onboarded", "type": "main", "index": 0}]]},
+    "Alert: onboarded": {"main": [[{"node": "Respond OK", "type": "main", "index": 0}]]},
+    "Alert: failed": {"main": [[{"node": "Respond Fail", "type": "main", "index": 0}]]}
+  }
+}

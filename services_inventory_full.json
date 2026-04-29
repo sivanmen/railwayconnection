@@ -1,0 +1,2821 @@
+{
+  "data": {
+    "projects": {
+      "edges": [
+        {
+          "node": {
+            "id": "08ae6d8b-972a-4deb-be32-36a670938a84",
+            "name": "Evolution API - Social M SYSTEM",
+            "services": {
+              "edges": [
+                {
+                  "node": {
+                    "id": "733a03d7-ab9a-4795-b47f-644e9aac0068",
+                    "name": "Redis",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "ba8bbece-164a-4d7c-8b32-f55372d5be8d",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "a7811e74-4174-4131-988c-231c53affd37",
+                    "name": "Postgres",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "4336b20f-33c9-430a-ad74-476d76cd3f26",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "b9e00c97-b237-45f0-bbe9-40b07295e619",
+                    "name": "Evolution API",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "2fa311d7-5a42-4f2b-81b1-51ddeff666c3",
+                            "status": "SUCCESS",
+                            "staticUrl": "evolution-api-production-ef85.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "evolution-api-production-ef85.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "09b95815-fd16-40e7-84cd-26689fa04be9",
+            "name": "Dify",
+            "services": {
+              "edges": [
+                {
+                  "node": {
+                    "id": "15752084-0b9b-498a-8756-8adf59ce8cbc",
+                    "name": "Storage",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "25b186a5-f162-4766-b676-16a152c16f06",
+                            "status": "SUCCESS",
+                            "staticUrl": "storage-production-b35e.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "storage-production-b35e.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "4309617b-0fdf-47b2-930f-526010ad7afc",
+                    "name": "Redis",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "0aefc3d2-010b-4deb-9db7-e01ea508ae49",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "75612278-26c0-4d13-93b5-30641dbf53de",
+                    "name": "Database Provision",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "07ec463b-6e2b-452f-8d32-55f2b30be95e",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "7f7100a1-1af9-40c7-acfd-02eb719739b2",
+                    "name": "Sandbox",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "c90cfddd-899b-4578-a634-988b0427977e",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "870c89c1-dc72-4367-9b87-8a1a75b75855",
+                    "name": "Api",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "14c16790-5343-4b9c-a3e9-6a18c0f2fd0d",
+                            "status": "SUCCESS",
+                            "staticUrl": "difyapi.sivanmanagment.com"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "api-production-89bc.up.railway.app"
+                                }
+                              ],
+                              "customDomains": [
+                                {
+                                  "domain": "difyapi.sivanmanagment.com"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "ba983bec-0d12-4ee9-8be7-55233fc91a24",
+                    "name": "Plugin Daemon",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "1a729809-a65d-49b5-bac7-473940fe1766",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "c6644106-acfb-434e-9b80-b543e5e701d9",
+                    "name": "Worker",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "eed68c02-2d89-423c-80fa-9ddee7fb49e2",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "d261bfb4-deaa-4c85-b0fe-1821cb1b525c",
+                    "name": "Web",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "95ef1379-7ee6-4527-afb8-6e2c4e289003",
+                            "status": "SUCCESS",
+                            "staticUrl": "dify.sivanmanagment.com"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "web-production-614b5.up.railway.app"
+                                }
+                              ],
+                              "customDomains": [
+                                {
+                                  "domain": "dify.sivanmanagment.com"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "d536c60f-fc41-45d2-bc61-db7586d9a3d2",
+                    "name": "Storage Provision",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "259cab86-800b-41c3-a822-588febc41cb5",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "dd7c5505-7f7c-41c9-b741-a55bd6e164e9",
+                    "name": "Weaviate",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "aa5c8e01-f2a1-4136-9484-ea9169d3ad33",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "e160baa2-e272-4de5-bab4-5a0c3256224a",
+                    "name": "Postgres",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "136a57d3-f8b8-4d1c-943e-c1fc3f5e93aa",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "0ee2c5dd-4a04-4748-9d93-92c8dfc5a14a",
+            "name": "Paperclip- Ai Team",
+            "services": {
+              "edges": [
+                {
+                  "node": {
+                    "id": "877c7bf7-6276-49b4-8221-26599cd20f37",
+                    "name": "Paperclip",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "3f6c6d0d-0610-417e-ba5a-82c2306e17ca",
+                            "status": "SUCCESS",
+                            "staticUrl": "paperclip-production-89c6.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "paperclip-production-89c6.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "d6a9de03-2736-455a-a0a6-5a9c58b7beba",
+                    "name": "Postgres",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "e45078b1-5318-409c-a384-92201ed34ddf",
+                            "status": "SUCCESS",
+                            "staticUrl": "postgres-production-ea63e.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "postgres-production-ea63e.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "20af3da4-088b-4a71-9919-b5fba641a708",
+            "name": "Scared Investor Club",
+            "services": {
+              "edges": [
+                {
+                  "node": {
+                    "id": "66daed97-cb85-49e3-b88b-2482f7fbe4a7",
+                    "name": "blue-harbor-admin",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "98f58fa8-77eb-49d8-8c3d-252bd798bae6",
+                            "status": "SUCCESS",
+                            "staticUrl": "admin.blueharbor.agency"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "blue-harbor-admin-production.up.railway.app"
+                                }
+                              ],
+                              "customDomains": [
+                                {
+                                  "domain": "admin.blueharbor.agency"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "7eb4146f-8972-4a8f-9d12-c1978c3e28b9",
+                    "name": "blue-harbor-client",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "511aa351-4b37-47e3-bf94-28081af1ff89",
+                            "status": "SUCCESS",
+                            "staticUrl": "client.blueharbor.agency"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "blue-harbor-client-production.up.railway.app"
+                                }
+                              ],
+                              "customDomains": [
+                                {
+                                  "domain": "client.blueharbor.agency"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "822c3d98-9f50-4225-b453-1bedea373c0a",
+                    "name": "Postgres-mu9n",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "9a18c5a3-5902-4421-8870-fa4636171ec7",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "dd0cff12-df30-472f-b73e-cb2c5b847640",
+                    "name": "blue-harbor-web",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "da0f01d3-f591-4e22-90f6-dcaffee5f340",
+                            "status": "SUCCESS",
+                            "staticUrl": "www.blueharbor.agency"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "blue-harbor-web-production.up.railway.app"
+                                }
+                              ],
+                              "customDomains": [
+                                {
+                                  "domain": "www.blueharbor.agency"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "f5da586f-5ffb-4162-b9c2-00b210af766f",
+                    "name": "content-os-api",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "1366cc2c-3323-4294-957c-364f65d1ecf2",
+                            "status": "FAILED",
+                            "staticUrl": "content-os-api-production.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "content-os-api-production.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "ff198e6c-2b08-40d7-a8dd-7f5e81de18b2",
+                    "name": "Redis",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "c2426a45-9b8d-42e7-8d3b-b855b3560e8d",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "27d7e97e-61bd-4a62-91f4-e2a04a18282a",
+            "name": "Payload",
+            "services": {
+              "edges": [
+                {
+                  "node": {
+                    "id": "0dd6453c-b13c-4914-8b3b-48268d1978c5",
+                    "name": "payload-CMS",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "0e71c865-8610-4e04-b941-3f8a838582e8",
+                            "status": "SUCCESS",
+                            "staticUrl": "payload-cms-production-9eab.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "payload-cms-production-9eab.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "783a6fe6-e169-4492-9b70-0130d78026e6",
+                    "name": "Postgres",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "809c1b44-e636-4b4d-9d2d-b84ed80df665",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "2fabb175-54ae-4cdd-b957-88038ee8aac5",
+            "name": "Postiz social media managment",
+            "services": {
+              "edges": [
+                {
+                  "node": {
+                    "id": "75614c0b-3719-49cf-bafc-976c0e674373",
+                    "name": "Postgres",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "fcad65f6-57ba-4232-a582-ced96e1eb4e1",
+                            "status": "SUCCESS",
+                            "staticUrl": "postgres-production-7caa.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "postgres-production-7caa.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "8a5fdf54-6ef5-40fe-8a04-1569261a9841",
+                    "name": "auto-setup",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "8563f5f2-bb50-4b90-b573-a76b51ac56bd",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "bee2c962-8768-4248-ad4a-e46be38950df",
+                    "name": "Redis",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "d987748b-0a8d-41dd-8b82-bc99a65566d4",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "e64d11b5-c017-4b13-8a79-fae4e51c8477",
+                    "name": "gitroomhq/postiz-app:latest",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "d8275c21-412b-4a0b-b926-0582ae014a5f",
+                            "status": "SUCCESS",
+                            "staticUrl": "gitroomhqpostiz-applatest-production-c905.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "gitroomhqpostiz-applatest-production-c905.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "36982cb7-3842-4d9a-a8df-a2303e5a13ee",
+            "name": "Evolution API - Harmony SYSTEM",
+            "services": {
+              "edges": [
+                {
+                  "node": {
+                    "id": "6ed97f8e-e1f1-40dd-93c5-68e1e2ebe3e3",
+                    "name": "Evolution API",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "5ed3776f-675c-4360-adf5-72aeb5c9ab71",
+                            "status": "SUCCESS",
+                            "staticUrl": "evolution-api-production-aad5.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "evolution-api-production-aad5.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "744bbdaf-349f-4615-b3a5-25c4e5c711db",
+                    "name": "Redis",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "add981ab-feeb-42e1-83a1-82fcf51c3ad3",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "887800a3-5e85-4b24-b4c2-0c955e28061d",
+                    "name": "Postgres",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "d4f15fca-460c-4e30-ad85-43ea7e98ff53",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "5873bd15-0f38-4e5a-a0f2-db233e63e625",
+            "name": "N8n+MCP",
+            "services": {
+              "edges": [
+                {
+                  "node": {
+                    "id": "1ca4cd39-0ea8-4ea8-ba79-f0726d1f2f65",
+                    "name": "runner",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "c9c04fa5-d266-45a8-b445-50a7dbcfb742",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        },
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "51a717b5-c801-4ed5-8d62-6cb9470094bb",
+                    "name": "redis",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "3d869a4b-c28b-4247-80f2-8083ea65401f",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        },
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "7e444f10-2b56-4b1c-80c7-ef7fabeea494",
+                    "name": "webhook",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "e7c19c8e-2b6f-48f9-b1a5-be182f8b03f3",
+                            "status": "SUCCESS",
+                            "staticUrl": "webhook-n8nmcp.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "webhook-n8nmcp.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        },
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "webhook-production-b8ac.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "80a7f77e-70b9-4ac2-9a96-4d0f7f9a794f",
+                    "name": "mcp",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "476a20ad-ecbe-46f6-96da-2fb0f4424e7f",
+                            "status": "SUCCESS",
+                            "staticUrl": "mcp-production-85ef.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "mcp-n8nmcp.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        },
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "mcp-production-85ef.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "829a3c00-340a-4cde-abe2-02b3b419b6fa",
+                    "name": "worker",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "96b75f6e-2bf5-4055-8a71-5eb4cb0a2fe4",
+                            "status": "SUCCESS",
+                            "staticUrl": "worker-n8nmcp.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "worker-n8nmcp.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        },
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "worker-production-228a.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "927fa23c-df13-42db-94f2-717be17814c7",
+                    "name": "n8n",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "90720bff-6597-402b-92c4-4d3254f762f9",
+                            "status": "SUCCESS",
+                            "staticUrl": "n8n-n8nmcp.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "n8n-n8nmcp.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        },
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "n8n-production-986a.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "99a3ba00-333e-4b3e-a731-12dd123714a2",
+                    "name": "postgres",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "483bc74e-ee95-4b97-b8c1-d89b8a2ae4c4",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        },
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "c64f9d94-5fb9-45d7-b931-3ed8a3de07b4",
+                    "name": "main",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "ad2c63dc-0a44-4afb-9323-7a91630020f3",
+                            "status": "SUCCESS",
+                            "staticUrl": "main-n8nmcp.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "main-production-cbd6.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        },
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "main-n8nmcp.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "d9e6ec78-1c6e-49b9-a741-64f3e81c61d2",
+                    "name": "Postgres",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "9a178a8b-7922-430d-be08-b2242774e2fe",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        },
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "5e29e00c-6322-4b84-9f98-b766a3f43141",
+            "name": "Typebot",
+            "services": {
+              "edges": [
+                {
+                  "node": {
+                    "id": "1b8e0291-b932-4d25-baed-fb1eca31ed25",
+                    "name": "Console",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "dfa9e698-b243-4753-b63a-be50db044f34",
+                            "status": "SUCCESS",
+                            "staticUrl": "console-production-cecd.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "console-production-cecd.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "3c3fab66-0a4f-4e58-acb8-57ef5c6ac02a",
+                    "name": "Viewer",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "de27f992-94e8-43c8-ba7a-5d6cc56b5de0",
+                            "status": "SUCCESS",
+                            "staticUrl": "viewer-production-42c0.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "viewer-production-42c0.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "8c0f4a52-a598-46e0-804b-22456f5d2104",
+                    "name": "MinIO Bucket Creator",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "ac2c20b8-1578-49ec-bda6-56f3eff57285",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "9d81eb16-324e-4c6b-92a5-1b5b27b8c8b9",
+                    "name": "Postgres",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "757aad95-292f-4a01-ad92-a69f9625b9e0",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "9fe0f560-07ba-42a2-85d9-a6065f594d90",
+                    "name": "MinIO",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "45cafe69-6b73-47fe-85fb-03f2d17c59d1",
+                            "status": "SUCCESS",
+                            "staticUrl": "minio-production-979be.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "minio-production-979be.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "c825b228-6765-4342-acf4-cfd76938f831",
+                    "name": "Valkey",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "1c743599-4a68-4258-8549-409dce93e9be",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "c8f5fae8-68d3-4dd9-803e-989291d994da",
+                    "name": "Builder",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "eb798cd7-442e-47c1-8677-ad7ea02c4432",
+                            "status": "SUCCESS",
+                            "staticUrl": "builder-production-30fda.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "builder-production-30fda.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "7b7c80aa-2a38-4837-ae69-2fe776a48376",
+            "name": "Chatwoot",
+            "services": {
+              "edges": [
+                {
+                  "node": {
+                    "id": "40b20c95-5bf5-4cec-b847-97506c57e249",
+                    "name": "Postgres",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "6b23d07f-d0d0-47bb-9af7-d724c6496170",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "b86af656-7388-4c06-bfdc-35a9747c735b",
+                    "name": "Chatwoot",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "0896c285-6934-4724-8683-988bcbcd8933",
+                            "status": "SUCCESS",
+                            "staticUrl": "chatwoot-production-934d.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "chatwoot-production-934d.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "cae909df-a9dd-45d0-8945-864f9bb76011",
+                    "name": "Valkey",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "65ea0321-d89f-4396-8627-898721c9caf0",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "8000527b-bbf2-4a12-94cb-9d4bb0be713a",
+            "name": "Postiz 2",
+            "services": {
+              "edges": [
+                {
+                  "node": {
+                    "id": "4d9bdd19-9688-4055-bcc6-2add2a136e04",
+                    "name": "Redis",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "62581a2f-7e2b-4c47-9032-fb94e7a11ed0",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "d648b707-f14a-461f-bda9-8e9303198cf3",
+                    "name": "gitroomhq/postiz-app:latest",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "44aefbbd-971d-4f64-9021-ae5c54e9df57",
+                            "status": "SUCCESS",
+                            "staticUrl": "gitroomhqpostiz-applatest-production-db94.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "gitroomhqpostiz-applatest-production-db94.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "fc242566-024c-4d7f-a645-a942ed93edd0",
+                    "name": "Postgres",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "53b2e771-ec9d-4000-a832-3e63a0a3673c",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "81387d39-1ba4-45cc-b1fb-1294f9466388",
+            "name": "Harmony - investments system",
+            "services": {
+              "edges": [
+                {
+                  "node": {
+                    "id": "744b6eda-f017-4932-85ad-8d530a2e13d2",
+                    "name": "Postgres",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "d08abb3f-b6ed-4336-a4c0-6ca946640ff5",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "80dcf370-fc78-4655-87b5-121bbe508f91",
+                    "name": "harmony-bonds-api",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "4c58c311-77dc-4f21-ac91-bfdd490d8171",
+                            "status": "SUCCESS",
+                            "staticUrl": "harmony-bonds-api-production.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "harmony-bonds-api-production.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "85dc6974-6958-4ceb-96cd-f9700ab9810f",
+                    "name": "Redis",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "eeb42ef8-c6b1-4bac-bf2d-f62b4dbfde27",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "9d8b4244-f0f7-43f4-b86c-cce6df9b1995",
+                    "name": "harmony-bonds-client",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "a86ce9d5-915c-4bdc-b21c-ed8a51856b3e",
+                            "status": "SUCCESS",
+                            "staticUrl": "client.harmony-bonds.com"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": [
+                                {
+                                  "domain": "client.harmony-bonds.com"
+                                },
+                                {
+                                  "domain": "admin.harmony-bonds.com"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "8fd4c402-987d-4f7d-84b2-cbe81a8e21e0",
+            "name": "OpenClaw",
+            "services": {
+              "edges": [
+                {
+                  "node": {
+                    "id": "eed5a285-1e69-4e4f-93c2-af1ec885a4dc",
+                    "name": "searxng-railway",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "73f7c0a8-1323-46df-ab04-830c5e4a1536",
+                            "status": "SUCCESS",
+                            "staticUrl": "searxng-railway-production-d16d.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "searxng-railway-production-d16d.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "efd4e871-bf76-402f-95b6-ed13dfa04912",
+                    "name": "OpenClaw",
+                    "deployments": {
+                      "edges": []
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "openclaw-production-a349.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "9838659c-d22e-47fa-8ea2-8ffa1f7ec2af",
+            "name": "Social Media SYSTEM 2",
+            "services": {
+              "edges": [
+                {
+                  "node": {
+                    "id": "10fbcf7c-b3e8-44dd-a696-f2a083a4f8c1",
+                    "name": "contentos-web",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "467edbc0-31a3-47ee-9baf-622956194b3b",
+                            "status": "SUCCESS",
+                            "staticUrl": "social.sivanmanagment.com"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "contentos-web-production.up.railway.app"
+                                }
+                              ],
+                              "customDomains": [
+                                {
+                                  "domain": "social.sivanmanagment.com"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "16de1624-bb72-4494-876e-266db3a6b626",
+                    "name": "contentos-api",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "ec257bfc-567b-4f1b-99a4-7b6db3db5c97",
+                            "status": "SUCCESS",
+                            "staticUrl": "contentos-api-production.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "contentos-api-production.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "8921c287-9c1f-476b-84c1-3846eadf8d5c",
+                    "name": "Postgres",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "0fdaffdf-3f5c-46c4-af4d-9f46a9a23480",
+                            "status": "FAILED",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "96a724b6-628a-45da-8d40-cf20c69e480c",
+                    "name": "Postgres-qh0L",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "551fbdd1-bbb9-4c27-8288-de6d68cd5cf2",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "c6851162-1eac-49aa-8a34-52d863da656a",
+                    "name": "Postgres-WOGb",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "18f6b328-53d8-4476-a2b0-f1e1bda1865a",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "9f0ac8b2-e062-4be4-b000-377279792d14",
+            "name": "Evolution API - Sivan M SYSTEM",
+            "services": {
+              "edges": [
+                {
+                  "node": {
+                    "id": "0b5de873-9ca3-4779-8978-03a1b3d20d66",
+                    "name": "Evolution API",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "4587022c-9539-49e1-ae20-94e67f74a504",
+                            "status": "SUCCESS",
+                            "staticUrl": "evolution-api-production-eaab.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "evolution-api-production-eaab.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "5e555d9d-fba9-4b1e-8275-9f7b3d345ba6",
+                    "name": "Redis",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "0c399ed4-62ab-4044-b376-60e6d8d2342f",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "cb1cd7e8-1b9c-44e6-8880-9be7fff2eb1c",
+                    "name": "Postgres",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "1a1b154e-94bd-4459-8adc-dedf86c53682",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "a6b9316d-0043-4c8a-923b-5edd23c380b9",
+            "name": "LangGraph SYSTEM",
+            "services": {
+              "edges": [
+                {
+                  "node": {
+                    "id": "1cbc6ef9-9a58-41f0-8910-7efd2616e133",
+                    "name": "LangGraph",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "affeec5a-15ec-442d-b8bf-8dd0f4f6bfd1",
+                            "status": "SUCCESS",
+                            "staticUrl": "langgraph-production-3382.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "langgraph-production-3382.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "3cf8132b-75a5-453a-af84-cbfa2597482c",
+                    "name": "Redis",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "fd3c1c24-4081-4268-9df4-1d0d8b3e2036",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "63391f6c-8ea3-4d9e-8501-f7429f462f17",
+                    "name": "Postgres",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "9c664b21-8a75-4bea-b8e0-6e4b0811a1a4",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "c39caef7-d19f-4998-8b55-867e7bc091cc",
+            "name": "OpenJarvis",
+            "services": {
+              "edges": [
+                {
+                  "node": {
+                    "id": "6648d08c-e996-4c93-8e34-348e2af78919",
+                    "name": "OpenJarvis",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "36d083a2-c856-4ada-8273-52bf434cd0c6",
+                            "status": "SUCCESS",
+                            "staticUrl": "openjarvis-production-6a47.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "openjarvis-production-6a47.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "c4389b55-1d35-4947-9d23-d5f6077f213f",
+            "name": "Ruflo",
+            "services": {
+              "edges": [
+                {
+                  "node": {
+                    "id": "27469f88-0871-4cb7-bc3a-f1079b0f3af9",
+                    "name": "ruflo",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "c7b35a14-dcb5-4e98-8273-99ea4669e69f",
+                            "status": "SUCCESS",
+                            "staticUrl": "ruflo-production-0594.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "ruflo-production-0594.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "d422558c-02f1-4617-93c9-5eb85cecb19d",
+            "name": "Scared Investor מועדון משקיעים",
+            "services": {
+              "edges": [
+                {
+                  "node": {
+                    "id": "a72725eb-a1b2-4403-a179-a35b4aef9136",
+                    "name": "Postgres",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "182936f5-bc3d-45e2-9085-2657352a4dc9",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "f4536e6f-dbb9-4082-9f0a-ce56217a121d",
+            "name": "buddyboss",
+            "services": {
+              "edges": [
+                {
+                  "node": {
+                    "id": "4f7ca447-b0c1-4e23-a3ae-755bb2e40271",
+                    "name": "MySQL",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "f071a676-b37f-4ee2-bbed-e535a4139675",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "60928e5c-0706-4e22-aef3-e13511f20c21",
+                    "name": "Docker Image",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "5c68a76b-03fa-4ad1-8777-c46cb38b044d",
+                            "status": "SUCCESS",
+                            "staticUrl": "docker-image-production-85b2.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "docker-image-production-85b2.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "fb7a2a6b-0e86-47ce-a091-454fbd45309e",
+            "name": "Property Managment System",
+            "services": {
+              "edges": [
+                {
+                  "node": {
+                    "id": "0c0a6ac8-1c45-4277-99dd-688a4e40ca20",
+                    "name": "client",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "a3b95af0-e38e-4ec7-8ee9-64de87ce28c3",
+                            "status": "SUCCESS",
+                            "staticUrl": "client.sivanmanagment.com"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "client-production-40ef.up.railway.app"
+                                }
+                              ],
+                              "customDomains": [
+                                {
+                                  "domain": "client.sivanmanagment.com"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "3bf35605-d86e-4d66-a8f7-07f813c6ce3b",
+                    "name": "Postgres-eDXK",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "e97ea732-c69b-41e1-9014-3a0c52d80273",
+                            "status": "SUCCESS",
+                            "staticUrl": "postgres-edxk-production.up.railway.app"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "postgres-edxk-production.up.railway.app"
+                                }
+                              ],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "497395b1-b43b-44c7-b60e-4038f0d3eef8",
+                    "name": "admin",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "4e722e2e-4d21-4371-9c51-9e6845475b2d",
+                            "status": "SUCCESS",
+                            "staticUrl": "admin.sivanmanagment.com"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "admin-production-d795.up.railway.app"
+                                }
+                              ],
+                              "customDomains": [
+                                {
+                                  "domain": "admin.sivanmanagment.com"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "c9358df5-631a-44eb-8bec-fba5d87af58e",
+                    "name": "api",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "771d54d8-2b7f-4293-a20c-01464a6c9ddf",
+                            "status": "SUCCESS",
+                            "staticUrl": "api.sivanmanagment.com"
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [
+                                {
+                                  "domain": "api-production-6296.up.railway.app"
+                                }
+                              ],
+                              "customDomains": [
+                                {
+                                  "domain": "api.sivanmanagment.com"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "node": {
+                    "id": "cf3926a1-863b-4514-b716-9455c6c035ba",
+                    "name": "Redis",
+                    "deployments": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "f872d2d0-91e3-4da9-a0d1-f3008a5ac2f3",
+                            "status": "SUCCESS",
+                            "staticUrl": null
+                          }
+                        }
+                      ]
+                    },
+                    "serviceInstances": {
+                      "edges": [
+                        {
+                          "node": {
+                            "domains": {
+                              "serviceDomains": [],
+                              "customDomains": []
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

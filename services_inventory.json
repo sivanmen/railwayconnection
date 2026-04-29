@@ -1,27 +1,783 @@
-{
-  "fetched_at": "2026-04-29",
-  "total_projects": 21,
-  "projects": [
-    {"id": "08ae6d8b-972a-4deb-be32-36a670938a84", "name": "Evolution API - Social M SYSTEM"},
-    {"id": "09b95815-fd16-40e7-84cd-26689fa04be9", "name": "Dify"},
-    {"id": "0ee2c5dd-4a04-4748-9d93-92c8dfc5a14a", "name": "Paperclip- Ai Team"},
-    {"id": "20af3da4-088b-4a71-9919-b5fba641a708", "name": "Scared Investor Club"},
-    {"id": "27d7e97e-61bd-4a62-91f4-e2a04a18282a", "name": "Payload"},
-    {"id": "2fabb175-54ae-4cdd-b957-88038ee8aac5", "name": "Postiz social media managment"},
-    {"id": "36982cb7-3842-4d9a-a8df-a2303e5a13ee", "name": "Evolution API - Harmony SYSTEM"},
-    {"id": "5873bd15-0f38-4e5a-a0f2-db233e63e625", "name": "N8n+MCP"},
-    {"id": "5e29e00c-6322-4b84-9f98-b766a3f43141", "name": "Typebot"},
-    {"id": "7b7c80aa-2a38-4837-ae69-2fe776a48376", "name": "Chatwoot"},
-    {"id": "8000527b-bbf2-4a12-94cb-9d4bb0be713a", "name": "Postiz 2"},
-    {"id": "81387d39-1ba4-45cc-b1fb-1294f9466388", "name": "Harmony - investments system"},
-    {"id": "8fd4c402-987d-4f7d-84b2-cbe81a8e21e0", "name": "OpenClaw"},
-    {"id": "9838659c-d22e-47fa-8ea2-8ffa1f7ec2af", "name": "Social Media SYSTEM 2"},
-    {"id": "9f0ac8b2-e062-4be4-b000-377279792d14", "name": "Evolution API - Sivan M SYSTEM"},
-    {"id": "a6b9316d-0043-4c8a-923b-5edd23c380b9", "name": "LangGraph SYSTEM"},
-    {"id": "c39caef7-d19f-4998-8b55-867e7bc091cc", "name": "OpenJarvis"},
-    {"id": "c4389b55-1d35-4947-9d23-d5f6077f213f", "name": "Ruflo"},
-    {"id": "d422558c-02f1-4617-93c9-5eb85cecb19d", "name": "Scared Investor מועדון משקיעים"},
-    {"id": "f4536e6f-dbb9-4082-9f0a-ce56217a121d", "name": "buddyboss"},
-    {"id": "fb7a2a6b-0e86-47ce-a091-454fbd45309e", "name": "Property Managment System"}
-  ]
-}
+[
+  {
+    "project_id": "08ae6d8b-972a-4deb-be32-36a670938a84",
+    "project_name": "Evolution API - Social M SYSTEM",
+    "services": [
+      {
+        "service_id": "733a03d7-ab9a-4795-b47f-644e9aac0068",
+        "service_name": "Redis",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "a7811e74-4174-4131-988c-231c53affd37",
+        "service_name": "Postgres",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "b9e00c97-b237-45f0-bbe9-40b07295e619",
+        "service_name": "Evolution API",
+        "last_status": "SUCCESS",
+        "static_url": "evolution-api-production-ef85.up.railway.app",
+        "domains": [
+          "evolution-api-production-ef85.up.railway.app"
+        ]
+      }
+    ]
+  },
+  {
+    "project_id": "09b95815-fd16-40e7-84cd-26689fa04be9",
+    "project_name": "Dify",
+    "services": [
+      {
+        "service_id": "15752084-0b9b-498a-8756-8adf59ce8cbc",
+        "service_name": "Storage",
+        "last_status": "SUCCESS",
+        "static_url": "storage-production-b35e.up.railway.app",
+        "domains": [
+          "storage-production-b35e.up.railway.app"
+        ]
+      },
+      {
+        "service_id": "4309617b-0fdf-47b2-930f-526010ad7afc",
+        "service_name": "Redis",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "75612278-26c0-4d13-93b5-30641dbf53de",
+        "service_name": "Database Provision",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "7f7100a1-1af9-40c7-acfd-02eb719739b2",
+        "service_name": "Sandbox",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "870c89c1-dc72-4367-9b87-8a1a75b75855",
+        "service_name": "Api",
+        "last_status": "SUCCESS",
+        "static_url": "difyapi.sivanmanagment.com",
+        "domains": [
+          "api-production-89bc.up.railway.app",
+          "difyapi.sivanmanagment.com"
+        ]
+      },
+      {
+        "service_id": "ba983bec-0d12-4ee9-8be7-55233fc91a24",
+        "service_name": "Plugin Daemon",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "c6644106-acfb-434e-9b80-b543e5e701d9",
+        "service_name": "Worker",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "d261bfb4-deaa-4c85-b0fe-1821cb1b525c",
+        "service_name": "Web",
+        "last_status": "SUCCESS",
+        "static_url": "dify.sivanmanagment.com",
+        "domains": [
+          "web-production-614b5.up.railway.app",
+          "dify.sivanmanagment.com"
+        ]
+      },
+      {
+        "service_id": "d536c60f-fc41-45d2-bc61-db7586d9a3d2",
+        "service_name": "Storage Provision",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "dd7c5505-7f7c-41c9-b741-a55bd6e164e9",
+        "service_name": "Weaviate",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "e160baa2-e272-4de5-bab4-5a0c3256224a",
+        "service_name": "Postgres",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      }
+    ]
+  },
+  {
+    "project_id": "0ee2c5dd-4a04-4748-9d93-92c8dfc5a14a",
+    "project_name": "Paperclip- Ai Team",
+    "services": [
+      {
+        "service_id": "877c7bf7-6276-49b4-8221-26599cd20f37",
+        "service_name": "Paperclip",
+        "last_status": "SUCCESS",
+        "static_url": "paperclip-production-89c6.up.railway.app",
+        "domains": [
+          "paperclip-production-89c6.up.railway.app"
+        ]
+      },
+      {
+        "service_id": "d6a9de03-2736-455a-a0a6-5a9c58b7beba",
+        "service_name": "Postgres",
+        "last_status": "SUCCESS",
+        "static_url": "postgres-production-ea63e.up.railway.app",
+        "domains": [
+          "postgres-production-ea63e.up.railway.app"
+        ]
+      }
+    ]
+  },
+  {
+    "project_id": "20af3da4-088b-4a71-9919-b5fba641a708",
+    "project_name": "Scared Investor Club",
+    "services": [
+      {
+        "service_id": "66daed97-cb85-49e3-b88b-2482f7fbe4a7",
+        "service_name": "blue-harbor-admin",
+        "last_status": "SUCCESS",
+        "static_url": "admin.blueharbor.agency",
+        "domains": [
+          "blue-harbor-admin-production.up.railway.app",
+          "admin.blueharbor.agency"
+        ]
+      },
+      {
+        "service_id": "7eb4146f-8972-4a8f-9d12-c1978c3e28b9",
+        "service_name": "blue-harbor-client",
+        "last_status": "SUCCESS",
+        "static_url": "client.blueharbor.agency",
+        "domains": [
+          "blue-harbor-client-production.up.railway.app",
+          "client.blueharbor.agency"
+        ]
+      },
+      {
+        "service_id": "822c3d98-9f50-4225-b453-1bedea373c0a",
+        "service_name": "Postgres-mu9n",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "dd0cff12-df30-472f-b73e-cb2c5b847640",
+        "service_name": "blue-harbor-web",
+        "last_status": "SUCCESS",
+        "static_url": "www.blueharbor.agency",
+        "domains": [
+          "blue-harbor-web-production.up.railway.app",
+          "www.blueharbor.agency"
+        ]
+      },
+      {
+        "service_id": "f5da586f-5ffb-4162-b9c2-00b210af766f",
+        "service_name": "content-os-api",
+        "last_status": "FAILED",
+        "static_url": "content-os-api-production.up.railway.app",
+        "domains": [
+          "content-os-api-production.up.railway.app"
+        ]
+      },
+      {
+        "service_id": "ff198e6c-2b08-40d7-a8dd-7f5e81de18b2",
+        "service_name": "Redis",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      }
+    ]
+  },
+  {
+    "project_id": "27d7e97e-61bd-4a62-91f4-e2a04a18282a",
+    "project_name": "Payload",
+    "services": [
+      {
+        "service_id": "0dd6453c-b13c-4914-8b3b-48268d1978c5",
+        "service_name": "payload-CMS",
+        "last_status": "SUCCESS",
+        "static_url": "payload-cms-production-9eab.up.railway.app",
+        "domains": [
+          "payload-cms-production-9eab.up.railway.app"
+        ]
+      },
+      {
+        "service_id": "783a6fe6-e169-4492-9b70-0130d78026e6",
+        "service_name": "Postgres",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      }
+    ]
+  },
+  {
+    "project_id": "2fabb175-54ae-4cdd-b957-88038ee8aac5",
+    "project_name": "Postiz social media managment",
+    "services": [
+      {
+        "service_id": "75614c0b-3719-49cf-bafc-976c0e674373",
+        "service_name": "Postgres",
+        "last_status": "SUCCESS",
+        "static_url": "postgres-production-7caa.up.railway.app",
+        "domains": [
+          "postgres-production-7caa.up.railway.app"
+        ]
+      },
+      {
+        "service_id": "8a5fdf54-6ef5-40fe-8a04-1569261a9841",
+        "service_name": "auto-setup",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "bee2c962-8768-4248-ad4a-e46be38950df",
+        "service_name": "Redis",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "e64d11b5-c017-4b13-8a79-fae4e51c8477",
+        "service_name": "gitroomhq/postiz-app:latest",
+        "last_status": "SUCCESS",
+        "static_url": "gitroomhqpostiz-applatest-production-c905.up.railway.app",
+        "domains": [
+          "gitroomhqpostiz-applatest-production-c905.up.railway.app"
+        ]
+      }
+    ]
+  },
+  {
+    "project_id": "36982cb7-3842-4d9a-a8df-a2303e5a13ee",
+    "project_name": "Evolution API - Harmony SYSTEM",
+    "services": [
+      {
+        "service_id": "6ed97f8e-e1f1-40dd-93c5-68e1e2ebe3e3",
+        "service_name": "Evolution API",
+        "last_status": "SUCCESS",
+        "static_url": "evolution-api-production-aad5.up.railway.app",
+        "domains": [
+          "evolution-api-production-aad5.up.railway.app"
+        ]
+      },
+      {
+        "service_id": "744bbdaf-349f-4615-b3a5-25c4e5c711db",
+        "service_name": "Redis",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "887800a3-5e85-4b24-b4c2-0c955e28061d",
+        "service_name": "Postgres",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      }
+    ]
+  },
+  {
+    "project_id": "5873bd15-0f38-4e5a-a0f2-db233e63e625",
+    "project_name": "N8n+MCP",
+    "services": [
+      {
+        "service_id": "1ca4cd39-0ea8-4ea8-ba79-f0726d1f2f65",
+        "service_name": "runner",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "51a717b5-c801-4ed5-8d62-6cb9470094bb",
+        "service_name": "redis",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "7e444f10-2b56-4b1c-80c7-ef7fabeea494",
+        "service_name": "webhook",
+        "last_status": "SUCCESS",
+        "static_url": "webhook-n8nmcp.up.railway.app",
+        "domains": [
+          "webhook-n8nmcp.up.railway.app",
+          "webhook-production-b8ac.up.railway.app"
+        ]
+      },
+      {
+        "service_id": "80a7f77e-70b9-4ac2-9a96-4d0f7f9a794f",
+        "service_name": "mcp",
+        "last_status": "SUCCESS",
+        "static_url": "mcp-production-85ef.up.railway.app",
+        "domains": [
+          "mcp-n8nmcp.up.railway.app",
+          "mcp-production-85ef.up.railway.app"
+        ]
+      },
+      {
+        "service_id": "829a3c00-340a-4cde-abe2-02b3b419b6fa",
+        "service_name": "worker",
+        "last_status": "SUCCESS",
+        "static_url": "worker-n8nmcp.up.railway.app",
+        "domains": [
+          "worker-n8nmcp.up.railway.app",
+          "worker-production-228a.up.railway.app"
+        ]
+      },
+      {
+        "service_id": "927fa23c-df13-42db-94f2-717be17814c7",
+        "service_name": "n8n",
+        "last_status": "SUCCESS",
+        "static_url": "n8n-n8nmcp.up.railway.app",
+        "domains": [
+          "n8n-n8nmcp.up.railway.app",
+          "n8n-production-986a.up.railway.app"
+        ]
+      },
+      {
+        "service_id": "99a3ba00-333e-4b3e-a731-12dd123714a2",
+        "service_name": "postgres",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "c64f9d94-5fb9-45d7-b931-3ed8a3de07b4",
+        "service_name": "main",
+        "last_status": "SUCCESS",
+        "static_url": "main-n8nmcp.up.railway.app",
+        "domains": [
+          "main-production-cbd6.up.railway.app",
+          "main-n8nmcp.up.railway.app"
+        ]
+      },
+      {
+        "service_id": "d9e6ec78-1c6e-49b9-a741-64f3e81c61d2",
+        "service_name": "Postgres",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      }
+    ]
+  },
+  {
+    "project_id": "5e29e00c-6322-4b84-9f98-b766a3f43141",
+    "project_name": "Typebot",
+    "services": [
+      {
+        "service_id": "1b8e0291-b932-4d25-baed-fb1eca31ed25",
+        "service_name": "Console",
+        "last_status": "SUCCESS",
+        "static_url": "console-production-cecd.up.railway.app",
+        "domains": [
+          "console-production-cecd.up.railway.app"
+        ]
+      },
+      {
+        "service_id": "3c3fab66-0a4f-4e58-acb8-57ef5c6ac02a",
+        "service_name": "Viewer",
+        "last_status": "SUCCESS",
+        "static_url": "viewer-production-42c0.up.railway.app",
+        "domains": [
+          "viewer-production-42c0.up.railway.app"
+        ]
+      },
+      {
+        "service_id": "8c0f4a52-a598-46e0-804b-22456f5d2104",
+        "service_name": "MinIO Bucket Creator",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "9d81eb16-324e-4c6b-92a5-1b5b27b8c8b9",
+        "service_name": "Postgres",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "9fe0f560-07ba-42a2-85d9-a6065f594d90",
+        "service_name": "MinIO",
+        "last_status": "SUCCESS",
+        "static_url": "minio-production-979be.up.railway.app",
+        "domains": [
+          "minio-production-979be.up.railway.app"
+        ]
+      },
+      {
+        "service_id": "c825b228-6765-4342-acf4-cfd76938f831",
+        "service_name": "Valkey",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "c8f5fae8-68d3-4dd9-803e-989291d994da",
+        "service_name": "Builder",
+        "last_status": "SUCCESS",
+        "static_url": "builder-production-30fda.up.railway.app",
+        "domains": [
+          "builder-production-30fda.up.railway.app"
+        ]
+      }
+    ]
+  },
+  {
+    "project_id": "7b7c80aa-2a38-4837-ae69-2fe776a48376",
+    "project_name": "Chatwoot",
+    "services": [
+      {
+        "service_id": "40b20c95-5bf5-4cec-b847-97506c57e249",
+        "service_name": "Postgres",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "b86af656-7388-4c06-bfdc-35a9747c735b",
+        "service_name": "Chatwoot",
+        "last_status": "SUCCESS",
+        "static_url": "chatwoot-production-934d.up.railway.app",
+        "domains": [
+          "chatwoot-production-934d.up.railway.app"
+        ]
+      },
+      {
+        "service_id": "cae909df-a9dd-45d0-8945-864f9bb76011",
+        "service_name": "Valkey",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      }
+    ]
+  },
+  {
+    "project_id": "8000527b-bbf2-4a12-94cb-9d4bb0be713a",
+    "project_name": "Postiz 2",
+    "services": [
+      {
+        "service_id": "4d9bdd19-9688-4055-bcc6-2add2a136e04",
+        "service_name": "Redis",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "d648b707-f14a-461f-bda9-8e9303198cf3",
+        "service_name": "gitroomhq/postiz-app:latest",
+        "last_status": "SUCCESS",
+        "static_url": "gitroomhqpostiz-applatest-production-db94.up.railway.app",
+        "domains": [
+          "gitroomhqpostiz-applatest-production-db94.up.railway.app"
+        ]
+      },
+      {
+        "service_id": "fc242566-024c-4d7f-a645-a942ed93edd0",
+        "service_name": "Postgres",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      }
+    ]
+  },
+  {
+    "project_id": "81387d39-1ba4-45cc-b1fb-1294f9466388",
+    "project_name": "Harmony - investments system",
+    "services": [
+      {
+        "service_id": "744b6eda-f017-4932-85ad-8d530a2e13d2",
+        "service_name": "Postgres",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "80dcf370-fc78-4655-87b5-121bbe508f91",
+        "service_name": "harmony-bonds-api",
+        "last_status": "SUCCESS",
+        "static_url": "harmony-bonds-api-production.up.railway.app",
+        "domains": [
+          "harmony-bonds-api-production.up.railway.app"
+        ]
+      },
+      {
+        "service_id": "85dc6974-6958-4ceb-96cd-f9700ab9810f",
+        "service_name": "Redis",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "9d8b4244-f0f7-43f4-b86c-cce6df9b1995",
+        "service_name": "harmony-bonds-client",
+        "last_status": "SUCCESS",
+        "static_url": "client.harmony-bonds.com",
+        "domains": [
+          "client.harmony-bonds.com",
+          "admin.harmony-bonds.com"
+        ]
+      }
+    ]
+  },
+  {
+    "project_id": "8fd4c402-987d-4f7d-84b2-cbe81a8e21e0",
+    "project_name": "OpenClaw",
+    "services": [
+      {
+        "service_id": "eed5a285-1e69-4e4f-93c2-af1ec885a4dc",
+        "service_name": "searxng-railway",
+        "last_status": "SUCCESS",
+        "static_url": "searxng-railway-production-d16d.up.railway.app",
+        "domains": [
+          "searxng-railway-production-d16d.up.railway.app"
+        ]
+      },
+      {
+        "service_id": "efd4e871-bf76-402f-95b6-ed13dfa04912",
+        "service_name": "OpenClaw",
+        "last_status": "none",
+        "static_url": null,
+        "domains": [
+          "openclaw-production-a349.up.railway.app"
+        ]
+      }
+    ]
+  },
+  {
+    "project_id": "9838659c-d22e-47fa-8ea2-8ffa1f7ec2af",
+    "project_name": "Social Media SYSTEM 2",
+    "services": [
+      {
+        "service_id": "10fbcf7c-b3e8-44dd-a696-f2a083a4f8c1",
+        "service_name": "contentos-web",
+        "last_status": "SUCCESS",
+        "static_url": "social.sivanmanagment.com",
+        "domains": [
+          "contentos-web-production.up.railway.app",
+          "social.sivanmanagment.com"
+        ]
+      },
+      {
+        "service_id": "16de1624-bb72-4494-876e-266db3a6b626",
+        "service_name": "contentos-api",
+        "last_status": "SUCCESS",
+        "static_url": "contentos-api-production.up.railway.app",
+        "domains": [
+          "contentos-api-production.up.railway.app"
+        ]
+      },
+      {
+        "service_id": "8921c287-9c1f-476b-84c1-3846eadf8d5c",
+        "service_name": "Postgres",
+        "last_status": "FAILED",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "96a724b6-628a-45da-8d40-cf20c69e480c",
+        "service_name": "Postgres-qh0L",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "c6851162-1eac-49aa-8a34-52d863da656a",
+        "service_name": "Postgres-WOGb",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      }
+    ]
+  },
+  {
+    "project_id": "9f0ac8b2-e062-4be4-b000-377279792d14",
+    "project_name": "Evolution API - Sivan M SYSTEM",
+    "services": [
+      {
+        "service_id": "0b5de873-9ca3-4779-8978-03a1b3d20d66",
+        "service_name": "Evolution API",
+        "last_status": "SUCCESS",
+        "static_url": "evolution-api-production-eaab.up.railway.app",
+        "domains": [
+          "evolution-api-production-eaab.up.railway.app"
+        ]
+      },
+      {
+        "service_id": "5e555d9d-fba9-4b1e-8275-9f7b3d345ba6",
+        "service_name": "Redis",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "cb1cd7e8-1b9c-44e6-8880-9be7fff2eb1c",
+        "service_name": "Postgres",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      }
+    ]
+  },
+  {
+    "project_id": "a6b9316d-0043-4c8a-923b-5edd23c380b9",
+    "project_name": "LangGraph SYSTEM",
+    "services": [
+      {
+        "service_id": "1cbc6ef9-9a58-41f0-8910-7efd2616e133",
+        "service_name": "LangGraph",
+        "last_status": "SUCCESS",
+        "static_url": "langgraph-production-3382.up.railway.app",
+        "domains": [
+          "langgraph-production-3382.up.railway.app"
+        ]
+      },
+      {
+        "service_id": "3cf8132b-75a5-453a-af84-cbfa2597482c",
+        "service_name": "Redis",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "63391f6c-8ea3-4d9e-8501-f7429f462f17",
+        "service_name": "Postgres",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      }
+    ]
+  },
+  {
+    "project_id": "c39caef7-d19f-4998-8b55-867e7bc091cc",
+    "project_name": "OpenJarvis",
+    "services": [
+      {
+        "service_id": "6648d08c-e996-4c93-8e34-348e2af78919",
+        "service_name": "OpenJarvis",
+        "last_status": "SUCCESS",
+        "static_url": "openjarvis-production-6a47.up.railway.app",
+        "domains": [
+          "openjarvis-production-6a47.up.railway.app"
+        ]
+      }
+    ]
+  },
+  {
+    "project_id": "c4389b55-1d35-4947-9d23-d5f6077f213f",
+    "project_name": "Ruflo",
+    "services": [
+      {
+        "service_id": "27469f88-0871-4cb7-bc3a-f1079b0f3af9",
+        "service_name": "ruflo",
+        "last_status": "SUCCESS",
+        "static_url": "ruflo-production-0594.up.railway.app",
+        "domains": [
+          "ruflo-production-0594.up.railway.app"
+        ]
+      }
+    ]
+  },
+  {
+    "project_id": "d422558c-02f1-4617-93c9-5eb85cecb19d",
+    "project_name": "Scared Investor מועדון משקיעים",
+    "services": [
+      {
+        "service_id": "a72725eb-a1b2-4403-a179-a35b4aef9136",
+        "service_name": "Postgres",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      }
+    ]
+  },
+  {
+    "project_id": "f4536e6f-dbb9-4082-9f0a-ce56217a121d",
+    "project_name": "buddyboss",
+    "services": [
+      {
+        "service_id": "4f7ca447-b0c1-4e23-a3ae-755bb2e40271",
+        "service_name": "MySQL",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      },
+      {
+        "service_id": "60928e5c-0706-4e22-aef3-e13511f20c21",
+        "service_name": "Docker Image",
+        "last_status": "SUCCESS",
+        "static_url": "docker-image-production-85b2.up.railway.app",
+        "domains": [
+          "docker-image-production-85b2.up.railway.app"
+        ]
+      }
+    ]
+  },
+  {
+    "project_id": "fb7a2a6b-0e86-47ce-a091-454fbd45309e",
+    "project_name": "Property Managment System",
+    "services": [
+      {
+        "service_id": "0c0a6ac8-1c45-4277-99dd-688a4e40ca20",
+        "service_name": "client",
+        "last_status": "SUCCESS",
+        "static_url": "client.sivanmanagment.com",
+        "domains": [
+          "client-production-40ef.up.railway.app",
+          "client.sivanmanagment.com"
+        ]
+      },
+      {
+        "service_id": "3bf35605-d86e-4d66-a8f7-07f813c6ce3b",
+        "service_name": "Postgres-eDXK",
+        "last_status": "SUCCESS",
+        "static_url": "postgres-edxk-production.up.railway.app",
+        "domains": [
+          "postgres-edxk-production.up.railway.app"
+        ]
+      },
+      {
+        "service_id": "497395b1-b43b-44c7-b60e-4038f0d3eef8",
+        "service_name": "admin",
+        "last_status": "SUCCESS",
+        "static_url": "admin.sivanmanagment.com",
+        "domains": [
+          "admin-production-d795.up.railway.app",
+          "admin.sivanmanagment.com"
+        ]
+      },
+      {
+        "service_id": "c9358df5-631a-44eb-8bec-fba5d87af58e",
+        "service_name": "api",
+        "last_status": "SUCCESS",
+        "static_url": "api.sivanmanagment.com",
+        "domains": [
+          "api-production-6296.up.railway.app",
+          "api.sivanmanagment.com"
+        ]
+      },
+      {
+        "service_id": "cf3926a1-863b-4514-b716-9455c6c035ba",
+        "service_name": "Redis",
+        "last_status": "SUCCESS",
+        "static_url": null,
+        "domains": []
+      }
+    ]
+  }
+]

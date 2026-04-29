@@ -1,0 +1,119 @@
+{
+  "name": "01_route",
+  "settings": {"executionOrder": "v1"},
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "mesh-route",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-route",
+      "name": "Webhook /webhook/mesh-route",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [0, 0],
+      "webhookId": "mesh-route-wh"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=https://n8n-production-986a.up.railway.app/api/v1/data-tables/gZRuzAmWa9sNwGc6/rows?filter={{ encodeURIComponent(JSON.stringify({name: ($json.body || $json).to})) }}",
+        "sendHeaders": true,
+        "headerParameters": {"parameters": [{"name": "X-N8N-API-KEY", "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNzJlZjdlNy04ZWI4LTRiNmMtYTc2ZS05YWUxMTIwOGNkYjciLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiMmE2NDEzZDgtNGZmNS00MDU1LThlNGEtZDdjZjUzODRmNmMxIiwiaWF0IjoxNzc3NDUyMDI4fQ.z_wAAqXb-jMfKXtqZx-pljq-aN6RxUW82gM1-n8V7-Y"}]},
+        "options": {"timeout": 5000}
+      },
+      "id": "lookup-svc",
+      "name": "Lookup target service",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [220, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Build outgoing call config from registry row\nconst originalBody = $('Webhook /webhook/mesh-route').first().json.body || $('Webhook /webhook/mesh-route').first().json;\nconst rows = $input.first().json.data || [];\nconst svc = rows[0];\n\nif (!svc || !svc.name) {\n  return [{json: {found: false, error: `service not found: ${originalBody.to}`}}];\n}\n\nconst capability = originalBody.capability;\nconst params = originalBody.params || {};\nconst from = originalBody.from || 'unknown';\n\nlet endpoints = {};\ntry { endpoints = typeof svc.endpoints === 'string' ? JSON.parse(svc.endpoints) : (svc.endpoints || {}); } catch(e) {}\nconst ep = endpoints[capability];\nif (!ep) {\n  return [{json: {found: false, error: `service '${svc.name}' has no capability '${capability}'`}}];\n}\n\n// Build URL with path params replaced\nlet path = ep.path || '/';\nfor (const [k, v] of Object.entries(params)) {\n  path = path.replace(`{${k}}`, encodeURIComponent(v));\n}\nconst url = svc.public_url.replace(/\\/$/, '') + path;\nconst method = (ep.method || 'GET').toUpperCase();\n\n// Build headers\nconst headers = {'Content-Type': 'application/json'};\nif (svc.auth_type === 'bearer' && svc.auth_header_template) {\n  headers['Authorization'] = svc.auth_header_template;\n} else if (svc.auth_type === 'api_key' && svc.auth_header_template) {\n  headers['X-API-Key'] = svc.auth_header_template;\n}\n\nreturn [{json: {\n  found: true,\n  url, method, headers,\n  body: (method === 'GET' || method === 'DELETE') ? null : params,\n  service: svc.name,\n  capability,\n  from\n}}];"
+      },
+      "id": "build-call",
+      "name": "Build call",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [440, 0]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {"caseSensitive": true, "typeValidation": "strict"},
+          "conditions": [
+            {
+              "leftValue": "={{ $json.found }}",
+              "rightValue": true,
+              "operator": {"type": "boolean", "operation": "true", "singleValue": true}
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "if-found",
+      "name": "Found?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [660, 0]
+    },
+    {
+      "parameters": {
+        "method": "={{ $json.method }}",
+        "url": "={{ $json.url }}",
+        "sendHeaders": true,
+        "specifyHeaders": "json",
+        "jsonHeaders": "={{ JSON.stringify($json.headers) }}",
+        "sendBody": "={{ $json.body !== null }}",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.body || {}) }}",
+        "options": {"timeout": 30000, "response": {"response": {"neverError": true, "responseFormat": "autodetect"}}}
+      },
+      "id": "do-call",
+      "name": "Call target service",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [880, -100],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "id": "respond-route",
+      "name": "Respond with result",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1100, -100]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=route_error: {{ $json.error }}",
+        "options": {"responseCode": 404}
+      },
+      "id": "respond-notfound",
+      "name": "Respond not found",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [880, 100]
+    }
+  ],
+  "connections": {
+    "Webhook /webhook/mesh-route": {"main": [[{"node": "Lookup target service", "type": "main", "index": 0}]]},
+    "Lookup target service": {"main": [[{"node": "Build call", "type": "main", "index": 0}]]},
+    "Build call": {"main": [[{"node": "Found?", "type": "main", "index": 0}]]},
+    "Found?": {
+      "main": [
+        [{"node": "Call target service", "type": "main", "index": 0}],
+        [{"node": "Respond not found", "type": "main", "index": 0}]
+      ]
+    },
+    "Call target service": {"main": [[{"node": "Respond with result", "type": "main", "index": 0}]]}
+  }
+}

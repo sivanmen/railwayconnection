@@ -1,0 +1,46 @@
+{
+  "name": "99_error_handler",
+  "settings": {"executionOrder": "v1"},
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "err-trigger",
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Build alert payload from error trigger context\nconst e = $input.first().json;\nconst wf = e.workflow || {};\nconst exec = e.execution || {};\nconst lastNode = exec.lastNodeExecuted || 'unknown';\nconst errMsg = (exec.error?.message || JSON.stringify(exec.error || {})).slice(0, 500);\n\nreturn [{json: {\n  kind: 'alert',\n  service: `n8n-workflow:${wf.name || wf.id || 'unknown'}`,\n  classification: 'workflow_failure',\n  severity: 'high',\n  summary: `Workflow '${wf.name}' נכשל בצומת '${lastNode}'\\n\\nשגיאה: ${errMsg}`,\n  suggested_fix: `פתח את ההפעלה ב-n8n ובדוק: ${wf.id ? `https://n8n-production-986a.up.railway.app/workflow/${wf.id}/executions/${exec.id}` : 'n8n executions'}`,\n  incident_id: `wf_${wf.id || 'x'}_${exec.id || Date.now()}`\n}}];"
+      },
+      "id": "build-alert",
+      "name": "Build alert",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [220, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://n8n-production-986a.up.railway.app/webhook/mesh-alert",
+        "sendHeaders": true,
+        "headerParameters": {"parameters": [{"name": "Content-Type", "value": "application/json"}]},
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {"timeout": 10000}
+      },
+      "id": "send-alert",
+      "name": "Send to alert router",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [440, 0],
+      "continueOnFail": true
+    }
+  ],
+  "connections": {
+    "Error Trigger": {"main": [[{"node": "Build alert", "type": "main", "index": 0}]]},
+    "Build alert": {"main": [[{"node": "Send to alert router", "type": "main", "index": 0}]]}
+  }
+}

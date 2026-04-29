@@ -1,0 +1,103 @@
+{
+  "name": "04_alert_router",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "mesh-alert",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-trigger",
+      "name": "Webhook /webhook/mesh-alert",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [0, 0],
+      "webhookId": "mesh-alert-wh"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Build WhatsApp + Telegram messages from alert payload\nconst body = $input.first().json.body || $input.first().json;\nconst service = body.service || 'unknown';\nconst classification = body.classification || 'unknown';\nconst severity = body.severity || 'medium';\nconst summary = body.summary || 'No summary';\nconst suggested_fix = body.suggested_fix || 'No fix suggested';\nconst incident_id = body.incident_id || `${service}_${Date.now()}`;\nconst kind = body.kind || 'alert'; // 'alert' or 'recovery' or 'onboarded' or 'onboarding_failed'\n\nconst sevEmoji = {critical: '\\ud83d\\udd34', high: '\\ud83d\\udfe0', medium: '\\ud83d\\udfe1', low: '\\ud83d\\udd35', info: '\\u2139\\ufe0f'};\nconst sevHe = {critical: '\\u05e7\\u05e8\\u05d9\\u05d8\\u05d9', high: '\\u05d2\\u05d1\\u05d5\\u05d4', medium: '\\u05d1\\u05d9\\u05e0\\u05d5\\u05e0\\u05d9', low: '\\u05e0\\u05de\\u05d5\\u05da', info: '\\u05de\\u05d9\\u05d3\\u05e2'};\n\nlet whatsappText = '';\nlet telegramText = '';\n\nif (kind === 'recovery') {\n  whatsappText = `\\u2705 \\u05e9\\u05d9\\u05e8\\u05d5\\u05ea \\u05d7\\u05d6\\u05e8 \\u05dc\\u05e4\\u05e2\\u05d5\\u05dc\\u05d4 \\u2014 ${service}\\n\\n${summary}`;\n  telegramText = whatsappText;\n} else if (kind === 'onboarded') {\n  whatsappText = `\\u2705 \\u05e9\\u05d9\\u05e8\\u05d5\\u05ea \\u05d7\\u05d3\\u05e9 \\u05d4\\u05e6\\u05d8\\u05e8\\u05e3 \\u05dc-mesh\\n\\n\\u05e9\\u05dd: ${service}\\n${summary}`;\n  telegramText = whatsappText;\n} else if (kind === 'onboarding_failed') {\n  whatsappText = `\\ud83d\\udfe0 \\u05e9\\u05d9\\u05e8\\u05d5\\u05ea \\u05d7\\u05d3\\u05e9 \\u05dc\\u05d0 \\u05d4\\u05e6\\u05d8\\u05e8\\u05e3 \\u05dc-mesh\\n\\n\\u05e9\\u05dd: ${service}\\n\\u05e1\\u05d9\\u05d1\\u05d4: ${summary}\\n\\n\\u05ea\\u05d9\\u05e7\\u05d5\\u05df: ${suggested_fix}`;\n  telegramText = whatsappText;\n} else {\n  whatsappText = `${sevEmoji[severity] || '\\ud83d\\udea8'} \\u05d4\\u05ea\\u05e8\\u05d0\\u05ea \\u05de\\u05e2\\u05e8\\u05db\\u05ea \\u2014 Sivan Stack\\n\\n\\u05e9\\u05d9\\u05e8\\u05d5\\u05ea: ${service}\\n\\u05d7\\u05d5\\u05de\\u05e8\\u05d4: ${sevHe[severity] || severity}\\n\\u05d6\\u05de\\u05df: ${new Date().toLocaleString('he-IL', {timeZone: 'Asia/Jerusalem'})}\\n\\n\\u05de\\u05d4 \\u05e7\\u05e8\\u05d4:\\n${summary}\\n\\n\\u05d4\\u05de\\u05dc\\u05e6\\u05d4 \\u05dc\\u05ea\\u05d9\\u05e7\\u05d5\\u05df:\\n${suggested_fix}\\n\\nIncident ID: ${incident_id}`;\n  telegramText = whatsappText;\n}\n\nreturn [{json: {\n  whatsappText,\n  telegramText,\n  service, classification, severity, summary, suggested_fix, incident_id, kind\n}}];"
+      },
+      "id": "build-msgs",
+      "name": "Build messages",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [220, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://evolution-api-production-aad5.up.railway.app/message/sendText/{{ encodeURIComponent('סיון 0524518134') }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "apikey", "value": "19FB28BE4E14-4F4B-8847-109EF1F2717F"},
+            {"name": "Content-Type", "value": "application/json"}
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"number\": \"972524518134\",\n  \"text\": $json.whatsappText\n}",
+        "options": {"timeout": 10000}
+      },
+      "id": "send-whatsapp",
+      "name": "Send WhatsApp via Evolution",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, -100],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.telegram.org/bot8673863029:AAGp4gPP7dEuCpqDVRT-wz3bkDYSb7A6Q5k/sendMessage",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [{"name": "Content-Type", "value": "application/json"}]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"chat_id\": \"846604930\",\n  \"text\": $json.telegramText\n}",
+        "options": {"timeout": 10000}
+      },
+      "id": "send-telegram",
+      "name": "Send Telegram",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 100],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=ok incident=\"{{ $('Build messages').item.json.incident_id }}\""
+      },
+      "id": "respond",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [700, 0]
+    }
+  ],
+  "connections": {
+    "Webhook /webhook/mesh-alert": {
+      "main": [[{"node": "Build messages", "type": "main", "index": 0}]]
+    },
+    "Build messages": {
+      "main": [[
+        {"node": "Send WhatsApp via Evolution", "type": "main", "index": 0},
+        {"node": "Send Telegram", "type": "main", "index": 0}
+      ]]
+    },
+    "Send WhatsApp via Evolution": {
+      "main": [[{"node": "Respond", "type": "main", "index": 0}]]
+    },
+    "Send Telegram": {
+      "main": [[{"node": "Respond", "type": "main", "index": 0}]]
+    }
+  }
+}
